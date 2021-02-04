@@ -23,12 +23,13 @@ The plugin is passed an array of objects with `tag` and `content` properties. Th
 
 ```javascript
 const webpack = require('webpack')
-const HtmlWebpackSimpleIncludePlugin = require('html-webpack-simple-include');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+const HtmlWebpackSimpleIncludePlugin = require('html-webpack-simple-include-plugin');
 const fs = require('fs');
 
 module.exports = {
   // Webpack plugins. NOTE that HtmlWebpackSimpleIncludePlugin comes after HtmlWebpackPlugin
-  plugin: [
+  plugins: [
     new HtmlWebpackPlugin({
       /* configurations */
     }),
@@ -43,7 +44,6 @@ module.exports = {
         // this example shows replacing with file contents
         tag: '<include-footer />',
         content: fs.readFileSync(path.resolve(__dirname, "src/footer.html"))
-      }
       }
     ])
   ]
